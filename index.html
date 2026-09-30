@@ -280,6 +280,7 @@
           <label class="choice"><input type="radio" name="delivery" value="pickup" id="pickup" data-price="0" data-label="Self pickup · 5-day rental" required><span class="tile"><strong>I'll pick it up · 5-day rental</strong><span>Pick up &amp; return it yourself, e.g. 3 days before to 1 day after your event</span><span class="price">Included</span></span></label>
           <label class="choice"><input type="radio" name="delivery" value="delivery" data-price="100" data-label="Delivery, setup &amp; breakdown"><span class="tile"><strong>Deliver it for me</strong><span>We deliver, set up &amp; break down at your event</span><span class="price">+$100</span></span></label>
         </div>
+        <p class="lock-note" id="mileageNote" hidden>*Delivery includes travel within 35 miles. Beyond that, there's a mileage fee: $5 minimum, then $1 per additional mile.</p>
         <div class="err">Please choose pickup or delivery.</div>
       </div>
 
@@ -335,6 +336,7 @@
       <h2>Your quote</h2>
       <ul class="line-items" id="lineItems"></ul>
       <div class="total-row"><span>Total</span><span class="total" id="total">$0</span></div>
+      <p class="note" id="mileageQuoteNote" style="display:none">*Delivery beyond 35 miles adds a mileage fee ($5 min, then $1/mile).</p>
       <p class="note" id="moreNote" style="display:none;color:var(--accent);font-weight:500">+ Extra machines / designs: we'll send a custom quote.</p>
       <p class="note">Estimate only. Your final quote is confirmed after we review your event details.</p>
     </div>
@@ -386,6 +388,8 @@
   function syncRental() {
     // Hours only apply when we deliver
     const delivering = !!form.querySelector('input[name=delivery][value=delivery]:checked');
+    document.getElementById('mileageNote').hidden = !delivering;
+    document.getElementById('mileageQuoteNote').style.display = delivering ? 'block' : 'none';
     const hoursGroup = document.getElementById('hoursGroup');
     hoursGroup.hidden = !delivering;
     hoursGroup.querySelectorAll('input').forEach(el => el.disabled = !delivering);
