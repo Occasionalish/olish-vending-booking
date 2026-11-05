@@ -228,6 +228,25 @@
   .about p { color: var(--muted); margin: 0; }
   @media (max-width: 600px) { .about img { width: 56px; height: 56px; } }
 
+  /* Trusted by: one-color client logos */
+  .trusted { text-align: center; padding-top: 8px !important; padding-bottom: 8px !important; }
+  .trusted .eyebrow { color: var(--muted); margin-bottom: 14px; }
+  .logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px 48px; }
+  .logos img { display: block; width: auto; filter: brightness(0); opacity: .55; transition: opacity .15s; }
+  .logos img:hover { opacity: .85; }
+  .logos .l-google { height: 26px; }
+  .logos .l-blomma { height: 26px; }
+  .logos .l-verkada { height: 20px; }
+  .logos .l-docomo { height: 34px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .logos img { filter: brightness(0) invert(1); opacity: .7; } }
+  :root[data-theme="dark"] .logos img { filter: brightness(0) invert(1); opacity: .7; }
+  @media (max-width: 600px) {
+    .logos { display: grid; grid-template-columns: repeat(2, auto); justify-content: center; justify-items: center; gap: 20px 44px; }
+    .logos .l-google, .logos .l-blomma { height: 21px; }
+    .logos .l-verkada { height: 16px; }
+    .logos .l-docomo { height: 28px; }
+  }
+
   /* Fixed quote bar only once the visitor reaches the form */
   body:not(.in-form) .mobile-bar { display: none !important; }
   #book { scroll-margin-top: 8px; }
@@ -266,6 +285,16 @@
           <p>Hi, I'm Candy, the founder and artist behind Occasionalish. I started the brand in 2019 with a love for creativity, celebrations, and charming everyday goods, and events and weddings still inspire much of what I make.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="trusted" aria-label="Corporate clients">
+    <div class="eyebrow">Trusted by teams at</div>
+    <div class="logos">
+      <img class="l-google" src="images/clients/google.svg" alt="Google">
+      <img class="l-blomma" src="images/clients/blomma.png" alt="Blomma">
+      <img class="l-verkada" src="images/clients/verkada.svg" alt="Verkada">
+      <img class="l-docomo" src="images/clients/docomo.svg" alt="Docomo Innovations">
     </div>
   </section>
 
